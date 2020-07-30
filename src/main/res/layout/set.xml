@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp">
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="3dp"
+      android:background="#000000"/>
+    <Button
+        android:id="@+id/weather_agree"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@mipmap/ic_launcher_foreground_weather"
+        android:background="#FFFFFF"
+        android:text="날씨수신알람동의"
+        android:textSize="23dp"     />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#FFFFFF"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <Button
+        android:id="@+id/parents_agree"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@mipmap/ic_launcher_foreground_parents"
+        android:background="#FFFFFF"
+        android:text="부모님 메세지 수신 동의"
+        android:textSize="23dp"        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#FFFFFF"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+    <Button
+        android:id="@+id/pass_change"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@mipmap/ic_launcher_foreground_pass_change"
+        android:background="#FFFFFF"
+        android:text="비밀번호 변경"
+        android:textSize="23dp"        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#FFFFFF"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+    <Button
+        android:id="@+id/account_delete"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@mipmap/ic_launcher_foreground_account_delete"
+        android:background="#FFFFFF"
+        android:text="계정 탈퇴"
+        android:textSize="23dp"        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"/>
+
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">hojuino</string>
+    <string name="text1">이름</string>
+    <string name="text2">생년월일</string>
+    <string name="text3">성별</string>
+    <string name="text4">부모님 연락처</string>
+    <string name="text5">학교</string>
+    <string name="text6">홍길동</string>
+    <string name="text7">60.01.01</string>
+    <string name="text8">010.0000.0000</string>
+    <string name="text9">남자</string>
+    <string name="text10">완료</string>
+    <string name="text11">취소</string>
+    <string name="text12">edit</string>
+    <string name="text13">동번서번초등학교</string>
+    <string name="todo">TODO</string>
+
+</resources>

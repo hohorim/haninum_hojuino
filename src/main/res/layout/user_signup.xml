@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user_id"
+        android:id="@+id/textView_main_name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_main_name" />
+
+    <TextView
+        android:id="@+id/textView_main_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_main_country" />
+
+    <TextView
+        android:id="@+id/textView_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User_Phone" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_phone" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign_Up"
+        android:id="@+id/button_main_insert" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/textView_main_result" />
+
+</LinearLayout>

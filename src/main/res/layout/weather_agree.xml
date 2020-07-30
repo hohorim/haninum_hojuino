@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|center_vertical">
+
+    <TextView
+        android:id="@+id/textview_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날씨에 따른 알람을 받으시겠습니까?"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/btn_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="동의 여부"
+        android:background="@drawable/button_style"/>
+</LinearLayout>

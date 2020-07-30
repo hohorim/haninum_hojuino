@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#FFEB3B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/gps"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/gps"/>
+
+        <Button
+            android:id="@+id/weather"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/weather"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/info"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/info"/>
+
+        <Button
+            android:id="@+id/set"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/set"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="180dp">
+
+        <Button
+            android:id="@+id/maker"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="350dp"
+            android:background="@drawable/maker"
+            />
+    </LinearLayout>
+
+</LinearLayout>
