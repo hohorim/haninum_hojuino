@@ -15,7 +15,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_main_name" />
+        android:id="@+id/ID" />
 
     <TextView
         android:id="@+id/textView_main_country"
@@ -26,7 +26,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_main_country" />
+        android:id="@+id/PW" />
 
     <TextView
         android:id="@+id/textView_phone"
@@ -37,13 +37,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_phone" />
+        android:id="@+id/phoneN" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign_Up"
-        android:id="@+id/button_main_insert" />
+        android:id="@+id/sign_up" />
 
     <TextView
         android:layout_width="match_parent"

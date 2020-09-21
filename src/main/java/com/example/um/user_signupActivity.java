@@ -22,14 +22,16 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.um.gpsActivity.abc;
+
 
 public class user_signupActivity extends AppCompatActivity {
 
-    private static String IP_ADDRESS = "192.168.0.140";
+    private static String IP_ADDRESS = "192.168.0.22";
     private static String TAG = "phptest";
 
-    private EditText mEditTextName;
-    private EditText mEditTextCountry, mEditTextphone;
+    private EditText mEditTextID;
+    private EditText mEditTextPW, mEditTextphone;
     private TextView mTextViewResult;
 
     String name;
@@ -39,33 +41,33 @@ public class user_signupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_signup);
 
-        mEditTextName = (EditText)findViewById(R.id.editText_main_name);
-        mEditTextCountry = (EditText)findViewById(R.id.editText_main_country);
+        mEditTextID = (EditText)findViewById(R.id.ID);
+        mEditTextPW = (EditText)findViewById(R.id.PW);
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
-        mEditTextphone = (EditText)findViewById(R.id.editText_phone);
+        mEditTextphone = (EditText)findViewById(R.id.phoneN);
 
 
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
 
-        Button buttonInsert = (Button)findViewById(R.id.button_main_insert);
+        Button buttonInsert = (Button)findViewById(R.id.sign_up);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String name = mEditTextName.getText().toString();
-                String country = mEditTextCountry.getText().toString();
-                String phone = mEditTextphone.getText().toString();
+                String ID = mEditTextID.getText().toString();
+                String PW = mEditTextPW.getText().toString();
+                String phoneN = mEditTextphone.getText().toString();
 
                 InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/insert.php", name,country,phone);
+                task.execute("http://" + IP_ADDRESS + "/insert.php",ID,PW,phoneN);
 
-                name = mEditTextName.getText().toString();
-                mEditTextName.setText("");
-                mEditTextCountry.setText("");
+                ID = mEditTextID.getText().toString();
+                mEditTextID.setText("");
+                mEditTextPW.setText("");
                 mEditTextphone.setText("");
 
-                Toast.makeText(getApplicationContext(), "id : "+name +" 님의 회원가입이 완료 되었습니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "id : "+ID +" 님의 회원가입이 완료 되었습니다.", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(user_signupActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -102,13 +104,14 @@ public class user_signupActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String name = (String)params[1];
-            String country = (String)params[2];
-            String phone = (String)params[3];
+            String ID = (String)params[1];
+            String PW = (String)params[2];
+            String phoneN = (String)params[3];
 
             String serverURL = (String)params[0];
-            String postParameters = "name=" + name + "&country=" + country +"&phone="+phone;
-
+            String postParameters = "ID=" + ID + "&PW=" + PW +"&phoneN="+phoneN;
+            //String postParameters = "ID=" + ID + "&PW=" + PW +"&phoneN="+phoneN + "&a="+abc ;
+            Log.d("qq",ID+PW+phoneN);
 
             try {
 

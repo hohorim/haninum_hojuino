@@ -19,7 +19,8 @@ import androidx.core.app.ActivityCompat;
 
 public class gpsActivity extends AppCompatActivity{
 
-
+    static String abc;
+    static String bcd;
     private LocationManager lm;
     private LocationListener locationListener;
 
@@ -74,6 +75,7 @@ public class gpsActivity extends AppCompatActivity{
                                 "Lng :" + loc.getLongitude(),
                         Toast.LENGTH_SHORT).show();
                 textView.setText("위도 :" + loc.getLatitude() + ", 경도 : " + loc.getLongitude());
+                abc = "위도 : "+loc.getLatitude();
             }
 
         }
