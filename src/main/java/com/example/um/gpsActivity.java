@@ -1,13 +1,18 @@
 package com.example.um;
+
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,20 +22,31 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class gpsActivity extends AppCompatActivity{
 
     static String abc;
-    static String bcd;
     private LocationManager lm;
     private LocationListener locationListener;
 
-    private TextView textView;
-
+    private TextView gps;
+    private TextView TextViewResult;
+    private static String IP_ADDRESS = "192.168.0.37";
+    private static String TAG = "phptest";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gps);
+
         Button buttonSetting = findViewById(R.id.button1);
 
         buttonSetting.setOnClickListener(new View.OnClickListener(){
@@ -40,7 +56,10 @@ public class gpsActivity extends AppCompatActivity{
             }
         });
 
-        textView = (TextView) findViewById(R.id.gps_text);
+        gps = (TextView) findViewById(R.id.gps_text);
+        TextViewResult = (TextView)findViewById(R.id.textView_result);
+
+        TextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -74,8 +93,17 @@ public class gpsActivity extends AppCompatActivity{
                         "Location changed : Lat : " + loc.getLatitude() +
                                 "Lng :" + loc.getLongitude(),
                         Toast.LENGTH_SHORT).show();
-                textView.setText("위도 :" + loc.getLatitude() + ", 경도 : " + loc.getLongitude());
+                gps.setText("위도 :" + loc.getLatitude() + ", 경도 : " + loc.getLongitude());
                 abc = "위도 : "+loc.getLatitude();
+
+                String location = TextViewResult.getText().toString();
+
+                InsertData task = new InsertData();
+                task.execute("http://" + IP_ADDRESS + "/location.php", location);
+
+                gps.setText("");
+
+                Toast.makeText(getApplicationContext(), "완료", Toast.LENGTH_LONG).show();
             }
 
         }
@@ -105,5 +133,92 @@ public class gpsActivity extends AppCompatActivity{
         }
         super.onActivityResult(requestCode, resultCode, data);
 
+    }
+
+    public class InsertData extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+        ProgressDialog progressDialog1;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(gpsActivity.this, "위치 받아오는 중",null, true);
+            progressDialog1 = ProgressDialog.show(gpsActivity.this, "wait", null, true, true);
+        }
+
+        public void execute(String s, String textview) {
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+
+            progressDialog1.dismiss();
+            TextViewResult.setText(s);
+            Log.d(TAG, "POST response -" + s);
+
+
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String gps = (String)params[1];
+
+            String serverURL = (String)params[0];
+            String postParameters = "gps=" + gps;
+            Log.d("qq", gps);
+
+            try{
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e){
+                Log.d(TAG, "InsertData: Error ", e);
+
+                return new String("Error: " + e.getMessage());
+            }
+            return null;
+        }
     }
 }

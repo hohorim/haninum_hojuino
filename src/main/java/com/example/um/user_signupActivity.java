@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -13,28 +12,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
+import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.example.um.gpsActivity.abc;
-
-
 public class user_signupActivity extends AppCompatActivity {
 
-    private static String IP_ADDRESS = "192.168.0.22";
+    private static String IP_ADDRESS = "192.168.0.37";
     private static String TAG = "phptest";
 
     private EditText mEditTextID;
     private EditText mEditTextPW, mEditTextphone;
     private TextView mTextViewResult;
-
-    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +37,7 @@ public class user_signupActivity extends AppCompatActivity {
 
         mEditTextID = (EditText)findViewById(R.id.ID);
         mEditTextPW = (EditText)findViewById(R.id.PW);
-        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        mTextViewResult = (TextView)findViewById(R.id.textView_result);
         mEditTextphone = (EditText)findViewById(R.id.phoneN);
 
 
@@ -62,7 +56,7 @@ public class user_signupActivity extends AppCompatActivity {
                 InsertData task = new InsertData();
                 task.execute("http://" + IP_ADDRESS + "/insert.php",ID,PW,phoneN);
 
-                ID = mEditTextID.getText().toString();
+                //ID = mEditTextID.getText().toString();
                 mEditTextID.setText("");
                 mEditTextPW.setText("");
                 mEditTextphone.setText("");

@@ -9,8 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user_id"
-        android:id="@+id/textView_main_name" />
+        android:text="아이디를 입력하세요."
+        android:id="@+id/textView_ID" />
 
     <EditText
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
         android:id="@+id/ID" />
 
     <TextView
-        android:id="@+id/textView_main_country"
+        android:id="@+id/textView_PW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password" />
+        android:text="비밀번호를 입력하세요." />
 
     <EditText
         android:layout_width="match_parent"
@@ -29,10 +29,10 @@
         android:id="@+id/PW" />
 
     <TextView
-        android:id="@+id/textView_phone"
+        android:id="@+id/textView_phoneN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User_Phone" />
+        android:text="부모님 전화번호를 입력하세요." />
 
     <EditText
         android:layout_width="match_parent"
@@ -42,12 +42,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign_Up"
+        android:text="회원등록"
         android:id="@+id/sign_up" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:id="@+id/textView_main_result" />
+        android:id="@+id/textView_result" />
 
 </LinearLayout>
