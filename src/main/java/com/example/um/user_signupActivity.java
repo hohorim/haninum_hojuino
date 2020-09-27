@@ -56,7 +56,7 @@ public class user_signupActivity extends AppCompatActivity {
                 InsertData task = new InsertData();
                 task.execute("http://" + IP_ADDRESS + "/insert.php",ID,PW,phoneN);
 
-                //ID = mEditTextID.getText().toString();
+                ID = mEditTextID.getText().toString();
                 mEditTextID.setText("");
                 mEditTextPW.setText("");
                 mEditTextphone.setText("");

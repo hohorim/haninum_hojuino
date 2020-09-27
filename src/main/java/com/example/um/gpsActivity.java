@@ -23,22 +23,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class gpsActivity extends AppCompatActivity{
 
-    static String abc;
+    static double x, y;
     private LocationManager lm;
     private LocationListener locationListener;
 
     private TextView gps;
     private TextView TextViewResult;
+
     private static String IP_ADDRESS = "192.168.0.37";
     private static String TAG = "phptest";
 
@@ -94,14 +93,17 @@ public class gpsActivity extends AppCompatActivity{
                                 "Lng :" + loc.getLongitude(),
                         Toast.LENGTH_SHORT).show();
                 gps.setText("위도 :" + loc.getLatitude() + ", 경도 : " + loc.getLongitude());
-                abc = "위도 : "+loc.getLatitude();
-
-                String location = TextViewResult.getText().toString();
+                //abc = "위도 : "+loc.getLatitude();
+                x = loc.getLatitude();
+                y = loc.getLongitude();
+                String GPS = gps.getText().toString();
 
                 InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/location.php", location);
-
+                task.execute("http://" + IP_ADDRESS + "/location.php", GPS);
+                GPS = gps.getText().toString();
                 gps.setText("");
+
+                //gps.setText("");
 
                 Toast.makeText(getApplicationContext(), "완료", Toast.LENGTH_LONG).show();
             }
@@ -137,16 +139,16 @@ public class gpsActivity extends AppCompatActivity{
 
     public class InsertData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
-        ProgressDialog progressDialog1;
+        // ProgressDialog progressDialog1;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
             progressDialog = ProgressDialog.show(gpsActivity.this, "위치 받아오는 중",null, true);
-            progressDialog1 = ProgressDialog.show(gpsActivity.this, "wait", null, true, true);
+            // progressDialog1 = ProgressDialog.show(gpsActivity.this, "wait", null, true, true);
         }
 
-        public void execute(String s, String textview) {
+        public void execute(String s) {
         }
 
         @Override
@@ -154,9 +156,9 @@ public class gpsActivity extends AppCompatActivity{
             super.onPostExecute(s);
             progressDialog.dismiss();
 
-            progressDialog1.dismiss();
-            TextViewResult.setText(s);
-            Log.d(TAG, "POST response -" + s);
+            //  progressDialog1.dismiss();
+            //  TextViewResult.setText(s);
+            //Log.d(TAG, "POST response -" + s);
 
 
 
@@ -165,11 +167,11 @@ public class gpsActivity extends AppCompatActivity{
         @Override
         protected String doInBackground(String... params) {
 
-            String gps = (String)params[1];
+            String GPS = (String)params[1];
 
             String serverURL = (String)params[0];
-            String postParameters = "gps=" + gps;
-            Log.d("qq", gps);
+            String postParameters = "gps=" + GPS;
+            Log.d("qq", GPS);
 
             try{
                 URL url = new URL(serverURL);
@@ -209,16 +211,17 @@ public class gpsActivity extends AppCompatActivity{
                 bufferedReader.close();
 
                 return sb.toString();
-            } catch (MalformedURLException e) {
+
+            } /*catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (Exception e){
+            } */catch (Exception e){
                 Log.d(TAG, "InsertData: Error ", e);
 
                 return new String("Error: " + e.getMessage());
             }
-            return null;
+            // return null;
         }
     }
 }
