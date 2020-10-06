@@ -31,11 +31,11 @@ import java.net.URL;
 
 public class gpsActivity extends AppCompatActivity{
 
-    static double x, y;
+    public double x, y;
     private LocationManager lm;
     private LocationListener locationListener;
 
-    private TextView gps;
+    public TextView gps;
     private TextView TextViewResult;
 
     private static String IP_ADDRESS = "192.168.0.37";
@@ -84,7 +84,7 @@ public class gpsActivity extends AppCompatActivity{
 
     }
 
-    private class MyLocationListener implements LocationListener
+    public class MyLocationListener implements LocationListener
     {
         public void onLocationChanged(Location loc){
             if(loc != null) {
@@ -96,16 +96,17 @@ public class gpsActivity extends AppCompatActivity{
                 //abc = "위도 : "+loc.getLatitude();
                 x = loc.getLatitude();
                 y = loc.getLongitude();
-                String GPS = gps.getText().toString();
+                String GPS = String.valueOf(gps);
 
                 InsertData task = new InsertData();
                 task.execute("http://" + IP_ADDRESS + "/location.php", GPS);
-                GPS = gps.getText().toString();
+
                 gps.setText("");
 
                 //gps.setText("");
 
                 Toast.makeText(getApplicationContext(), "완료", Toast.LENGTH_LONG).show();
+
             }
 
         }
@@ -146,6 +147,7 @@ public class gpsActivity extends AppCompatActivity{
 
             progressDialog = ProgressDialog.show(gpsActivity.this, "위치 받아오는 중",null, true);
             // progressDialog1 = ProgressDialog.show(gpsActivity.this, "wait", null, true, true);
+            Log.d("tlqkf2", "이거되냐");
         }
 
         public void execute(String s) {
@@ -186,7 +188,7 @@ public class gpsActivity extends AppCompatActivity{
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
+                Log.d("tlqkf", "이거되냐");
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "POST response code - " + responseStatusCode);
 
@@ -207,7 +209,7 @@ public class gpsActivity extends AppCompatActivity{
                 while((line = bufferedReader.readLine()) != null){
                     sb.append(line);
                 }
-
+                Log.d("tlqkf3", "이거되냐");
                 bufferedReader.close();
 
                 return sb.toString();
@@ -219,7 +221,7 @@ public class gpsActivity extends AppCompatActivity{
             } */catch (Exception e){
                 Log.d(TAG, "InsertData: Error ", e);
 
-                return new String("Error: " + e.getMessage());
+                return new String("Error2: " + e.getMessage());
             }
             // return null;
         }
