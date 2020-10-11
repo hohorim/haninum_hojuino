@@ -23,7 +23,7 @@ import java.net.URL;
 
 public class user_signupActivity extends AppCompatActivity {
 
-    private static String IP_ADDRESS = "192.168.0.37";
+    private static String IP_ADDRESS = "192.168.0.22";
     private static String TAG = "phptest";
 
     private EditText mEditTextID;
@@ -127,7 +127,7 @@ public class user_signupActivity extends AppCompatActivity {
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "POST response code - " + responseStatusCode);
-
+                Log.d("aa ", ID);
                 InputStream inputStream;
                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
                     inputStream = httpURLConnection.getInputStream();

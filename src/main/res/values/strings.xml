@@ -14,5 +14,6 @@
     <string name="text12">edit</string>
     <string name="text13">동번서번초등학교</string>
     <string name="todo">TODO</string>
+    <string name="adress">192.168.0.22</string>
 
 </resources>
