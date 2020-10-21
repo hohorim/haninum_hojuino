@@ -1,48 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.example.um.gpsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/colorAccent"
+        android:text="Hello World!"
+        android:id="@+id/textViewReciev" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="119.206.253.41"
+        android:ems="10"
+        android:layout_below="@+id/textViewReciev"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="31dp"
+        android:id="@+id/addressText" />
+
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="195dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/portText"
+        android:layout_alignStart="@+id/portText"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="0000" />
+
+    <TextView
+        android:id="@+id/messageText2"
+        android:layout_width="194dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/portText"
+        android:layout_alignStart="@+id/portText"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="54dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="0000" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="8888"
+        android:ems="10"
+        android:id="@+id/portText"
+        android:layout_below="@+id/addressText"
+        android:layout_alignStart="@+id/addressText" />
 
     <Button
         android:id="@+id/gps_btn"
         android:layout_width="130dp"
         android:layout_height="50dp"
-        android:text="button_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        android:layout_below="@+id/messageText2"
+        android:layout_alignStart="@+id/messageText2"
+        android:layout_alignEnd="@+id/messageText2"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="35dp"
+        android:text="gps" />
+    <!--
+        <Button
+            android:text="clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonClear"
+            android:layout_alignBaseline="@+id/buttonConnect"
+            android:layout_alignBottom="@+id/buttonConnect"
+            android:layout_alignEnd="@+id/messageText" />
 
-    <TextView
-        android:id="@+id/gps_text"
-        android:layout_width="0dp"
-        android:layout_height="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gps_btn" />
-
-    <TextView
-        android:id="@+id/textView_result"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="37dp" />
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="btn"
-        app:layout_constraintBottom_toTopOf="@+id/textView_result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gps_text" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/messageText"
+            android:layout_alignStart="@+id/messageText"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="77dp"
+            android:text="Send" />
+        -->
+</RelativeLayout>

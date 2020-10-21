@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button sign_in, sign_up;
 
     char result2;
-    private static String IP_ADDRESS = "192.168.0.22";
+    private static String IP_ADDRESS = "119.206.253.41";
     private static String TAG = "phptest";
 
     @Override

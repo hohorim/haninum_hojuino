@@ -23,7 +23,7 @@ import java.net.URL;
 
 public class user_signupActivity extends AppCompatActivity {
 
-    private static String IP_ADDRESS = "192.168.0.22";
+    private static String IP_ADDRESS = "119.206.253.41";
     private static String TAG = "phptest";
 
     private EditText mEditTextID;
